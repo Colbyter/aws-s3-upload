@@ -24,9 +24,10 @@ def index(request):
     print "incoming data", data
     with open("json.txt","w+") as filetest:
         json.dump(data, filetest)
-     
-    with open("json.txt", "rb") as f:
-        s3.upload_fileobj(f, "YOUR_BUCKET_NAME_HERE", "cdr_test.txt")
+    
+    #save the payload in txt format. This is just an example. 
+    with open("payload.txt", "rb") as f:
+        s3.upload_fileobj(f, "YOUR_BUCKET_NAME_HERE", "data.txt")
     
     filepath = dname + "/json.txt"
     os.remove(filepath)
